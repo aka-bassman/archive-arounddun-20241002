@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: registry.akamir.com/akamir/{{ .Values.appName }}/frontend:{{ $branch }}-live
+          image: registry.akamir.com/archive-arounddun-20241002/{{ .Values.appName }}/frontend:{{ $branch }}-live
           imagePullPolicy: Always
           ports:
             - containerPort: 4200

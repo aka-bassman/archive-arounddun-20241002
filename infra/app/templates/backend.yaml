@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: backend-federation
-          image: registry.akamir.com/akamir/{{ .Values.appName }}/backend:{{ $branch }}-live
+          image: registry.akamir.com/archive-arounddun-20241002/{{ .Values.appName }}/backend:{{ $branch }}-live
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
         - name: backend-batch
-          image: registry.akamir.com/akamir/{{ .Values.appName }}/backend:{{ $branch }}-live
+          image: registry.akamir.com/archive-arounddun-20241002/{{ .Values.appName }}/backend:{{ $branch }}-live
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
