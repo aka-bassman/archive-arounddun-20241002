@@ -1,0 +1,103 @@
+{
+  "root": true,
+  "plugins": ["@nx", "sort-imports-es6-autofix", "unused-imports", "import", "@typescript-eslint"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/strict-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:tailwindcss/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true,
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "ignorePatterns": [
+    "**/node_modules/**/*",
+    "**/photoshop/**/*",
+    "**/public/**/*",
+    "**/ios/**/*",
+    "**/android/**/*",
+    "**/*.js",
+    "**/*.jsx",
+    "**/typechain-types/**/*",
+    "**/script*.ts",
+    "data/**/*",
+    "dist/**/*",
+    "releases/**/*"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "excludedFiles": ["*.js", "*.jsx"],
+      "rules": {
+        "no-console": "error",
+        "@nx/workspace/useClientByFile": "error",
+        "@nx/workspace/noImportClientFunctions": "error",
+        "@nx/workspace/nonScalarPropsRestricted": "error",
+        "@nx/workspace/noImportExternalLibrary": "error",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/consistent-indexed-object-style": "off",
+        "@typescript-eslint/no-extraneous-class": "off",
+        "@typescript-eslint/no-unsafe-enum-comparison": "off",
+        "@typescript-eslint/prefer-promise-reject-errors": "off",
+        "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
+        "tailwindcss/no-custom-classname": "off",
+        "react/display-name": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "@next/next/no-html-link-for-pages": "off",
+        "jsx-a11y/alt-text": [0],
+        "sort-imports-es6-autofix/sort-imports-es6": [
+          2,
+          {
+            "ignoreCase": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+          }
+        ],
+        "unused-imports/no-unused-imports": "error",
+        "no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended"]
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:import/recommended"],
+      "rules": {
+        "import/no-duplicates": "error",
+        "import/no-unresolved": "off",
+        "import/named": "off",
+        "import/namespace": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "react-hooks/rules-of-hooks": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": "./tsconfig.json"
+    }
+  }
+}

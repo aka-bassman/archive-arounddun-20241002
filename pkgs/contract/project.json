@@ -1,0 +1,40 @@
+{
+  "name": "contract",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkgs/contract",
+  "projectType": "library",
+  "targets": {
+    "test": { "executor": "@nx/jest:jest" },
+    "lint": { "executor": "@nx/linter:eslint" },
+    "script": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cross-env ENVIRONMENT={args.env} npx hardhat run --network {args.chain} ./scripts/{args.file}.ts"
+        ],
+        "cwd": "pkgs/contract"
+      }
+    },
+    "compile": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["cross-env npx hardhat compile"],
+        "cwd": "pkgs/contract"
+      }
+    },
+    "hardhatTest": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["cross-env npx hardhat test"],
+        "cwd": "pkgs/contract"
+      }
+    },
+    "flatten": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["cross-env npx hardhat flatten"],
+        "cwd": "pkgs/contract"
+      }
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "generators": {
+    "@nx/react": {
+      "application": {
+        "style": "none",
+        "linter": "eslint",
+        "bundler": "webpack",
+        "babel": true
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint",
+        "unitTestRunner": "jest"
+      },
+      "component": {
+        "style": "none"
+      }
+    },
+    "@nx/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    },
+    "@nx/web:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "playwright"
+    },
+    "@nx/web:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    }
+  },
+  "pluginsConfig": {
+    "@nx/nest": {
+      "analyzeSourceFiles": true
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx run-many --targets=build-backend,build-frontend --projects={projectName} --parallel"],
+        "parallel": true
+      },
+      "configurations": {
+        "backend": {
+          "commands": ["nx run {projectName}:build-backend"]
+        },
+        "frontend": {
+          "commands": ["nx run {projectName}:build-frontend"]
+        }
+      },
+      "cache": true
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx run {projectName}:serve-backend", "nx run {projectName}:serve-frontend"],
+        "parallel": true
+      },
+      "configurations": {
+        "backend": {
+          "commands": ["nx run {projectName}:serve-backend"]
+        },
+        "frontend": {
+          "commands": ["nx run {projectName}:serve-frontend"]
+        }
+      }
+    },
+    "build-nest": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/{projectRoot}/backend",
+        "main": "{projectRoot}/main.ts",
+        "tsConfig": "pkgs/core/nest/tsconfig.backend.json",
+        "webpackConfig": "pkgs/core/nest/webpack.backend.base.js",
+        "generatePackageJson": false
+      }
+    },
+    "serve-nest": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/{projectRoot}/backend",
+        "main": "{projectRoot}/main.ts",
+        "tsConfig": "pkgs/core/nest/tsconfig.backend.json",
+        "webpackConfig": "pkgs/core/nest/webpack.backend.base.js",
+        "watch": true
+      }
+    },
+    "build-next": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "nextConfig": "{projectRoot}/next.config.js"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "{projectRoot}"
+        },
+        "production": {
+          "outputPath": "dist/{projectRoot}/frontend"
+        }
+      }
+    },
+    "serve-next": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "{projectName}:build-next",
+        "dev": true,
+        "turbo": false
+      }
+    },
+    "build-react": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/{projectRoot}/csr",
+        "index": "{projectRoot}/app/index.html",
+        "baseHref": "/",
+        "main": "{projectRoot}/app/csr.tsx",
+        "tsConfig": "{projectRoot}/tsconfig.json",
+        "styles": [],
+        "scripts": [],
+        "postcssConfig": "{projectRoot}/postcss.config.js",
+        "webpackConfig": "pkgs/core/next/webpack.csr.base.js",
+        "sourceMap": false,
+        "assets": [
+          {
+            "input": "{projectRoot}/public",
+            "glob": "**/*",
+            "output": "/"
+          }
+        ]
+      }
+    },
+    "serve-react": {
+      "executor": "@nx/webpack:dev-server",
+      "options": {
+        "buildTarget": "{projectName}:build-react",
+        "host": "0.0.0.0",
+        "port": 4201,
+        "hmr": true
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "{projectRoot}/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "cache": true
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["{projectRoot}/**/*.{ts,tsx,js,jsx}"]
+      },
+      "cache": true
+    },
+    "script": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cross-env ts-node --project ../../pkgs/core/nest/tsconfig.backend.json -r tsconfig-paths/register --transpile-only ./{args.file}.ts "
+        ],
+        "cwd": "{projectRoot}",
+        "parallel": false
+      }
+    },
+    "e2e": {
+      "cache": true
+    },
+    "build-storybook": {
+      "cache": true
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [
+      "{workspaceRoot}/pnpm-workspace.yaml",
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/nx.json"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
+    ]
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint",
+        "extensions": ["ts", "tsx", "js", "jsx", "html", "vue"]
+      }
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "jest:test"
+      }
+    }
+  ],
+  "defaultBase": "main"
+}

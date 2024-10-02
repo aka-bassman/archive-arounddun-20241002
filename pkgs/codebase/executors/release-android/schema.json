@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "verbose": {
+      "type": "boolean",
+      "description": "Logging verbosity"
+    },
+    "environment": {
+      "type": "string",
+      "description": "The scheme to use for the project"
+    }
+  }
+}

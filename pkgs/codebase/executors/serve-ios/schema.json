@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "verbose": {
+      "type": "boolean",
+      "description": "Logging verbosity"
+    },
+    "open": {
+      "type": "boolean",
+      "description": "Open Xcode project after generation"
+    },
+    "env": {
+      "type": "string",
+      "description": "The environment to use for the project"
+    },
+    "operation": {
+      "type": "string",
+      "description": "The operation to perform"
+    }
+  }
+}

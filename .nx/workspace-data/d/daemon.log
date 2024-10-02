@@ -1,0 +1,33 @@
+[NX Daemon Server] - 2024-09-23T12:38:41.445Z - Started listening on: /var/folders/dw/p0f4ynzn0p36hz363jhvcghh0000gn/T/1422123c13cb25cd17ac/d.sock
+[NX Daemon Server] - 2024-09-23T12:38:41.448Z - [WATCHER]: Subscribed to changes within: /Users/kangminseon/Desktop/github/akamir (native)
+[NX Daemon Server] - 2024-09-23T12:38:41.454Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:38:41.454Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-23T12:38:41.455Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:38:41.456Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:38:41.456Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:38:41.456Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-23T12:38:41.457Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-09-23T12:38:41.459Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (sources)
+[NX Daemon Server] - 2024-09-23T12:38:41.459Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (outputs)
+[NX Daemon Server] - 2024-09-23T12:38:57.658Z - Started listening on: /var/folders/dw/p0f4ynzn0p36hz363jhvcghh0000gn/T/1422123c13cb25cd17ac/d.sock
+[NX Daemon Server] - 2024-09-23T12:38:57.660Z - [WATCHER]: Subscribed to changes within: /Users/kangminseon/Desktop/github/akamir (native)
+[NX Daemon Server] - 2024-09-23T12:38:57.661Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:38:57.661Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-23T12:38:57.662Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:38:57.663Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:38:57.663Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:38:57.664Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-23T12:38:57.666Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-09-23T12:38:57.666Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (sources)
+[NX Daemon Server] - 2024-09-23T12:38:57.667Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (outputs)
+[NX Daemon Server] - 2024-09-23T12:39:20.080Z - Started listening on: /var/folders/dw/p0f4ynzn0p36hz363jhvcghh0000gn/T/1422123c13cb25cd17ac/d.sock
+[NX Daemon Server] - 2024-09-23T12:39:20.082Z - [WATCHER]: Subscribed to changes within: /Users/kangminseon/Desktop/github/akamir (native)
+[NX Daemon Server] - 2024-09-23T12:39:20.083Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:39:20.083Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-23T12:39:20.084Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-23T12:39:20.085Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:39:20.085Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-09-23T12:39:20.085Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-23T12:39:20.087Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-09-23T12:39:20.088Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (sources)
+[NX Daemon Server] - 2024-09-23T12:39:20.089Z - [WATCHER]: Stopping the watcher for /Users/kangminseon/Desktop/github/akamir (outputs)

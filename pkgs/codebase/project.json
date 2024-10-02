@@ -1,0 +1,10 @@
+{
+  "name": "codebase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkgs/codebase",
+  "projectType": "library",
+  "targets": {
+    "test": { "executor": "@nx/jest:jest" },
+    "lint": { "executor": "@nx/linter:eslint" }
+  }
+}

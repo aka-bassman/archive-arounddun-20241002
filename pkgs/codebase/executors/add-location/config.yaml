@@ -1,0 +1,26 @@
+#add default permissions (ex : camera, location, etc..)
+vars:
+platforms:
+  ios:
+    targets:
+      App:
+        plist:
+          - replace: false
+            file: App/Info.plist
+            entries:
+              - NSLocationAlwaysUsageDescription: "$(PRODUCT_NAME) requires access to the location"
+              - NSLocationWhenInUseUsageDescription: "$(PRODUCT_NAME) requires access to the location"
+  android:
+    manifest:
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-feature android:name="android.hardware.location.gps" />

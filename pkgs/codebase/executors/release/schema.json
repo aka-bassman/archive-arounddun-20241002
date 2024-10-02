@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "verbose": {
+      "type": "boolean",
+      "description": "Logging verbosity"
+    },
+    "rebuild": {
+      "type": "boolean",
+      "description": "Rebuild the project"
+    },
+    "branch": {
+      "type": "string",
+      "description": "Build number"
+    },
+    "buildNum": {
+      "type": "number",
+      "description": "Build number"
+    },
+    "local": {
+      "type": "boolean",
+      "description": "Local test run"
+    }
+  }
+}

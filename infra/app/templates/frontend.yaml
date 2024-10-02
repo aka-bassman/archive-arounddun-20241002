@@ -1,0 +1,179 @@
+{{- $namespaceParts := split "-" .Release.Namespace }}
+{{- $branch := index $namespaceParts "_1" }}
+{{- $config := index .Values $branch }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: {{ .Values.appName }}-{{ $branch }}
+  labels:
+    app: frontend
+spec:
+  replicas: {{ $config.frontend.replicas }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: registry.akamir.com/akamir/{{ .Values.appName }}/frontend:{{ $branch }}-live
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200
+          resources:
+            requests:
+              memory: {{ $config.frontend.resources.requests.memory }}
+              cpu: {{ $config.frontend.resources.requests.cpu }}
+            limits:
+              memory: {{ $config.frontend.resources.limits.memory }}
+              cpu: {{ $config.frontend.resources.limits.cpu }}
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+  namespace: {{ .Values.appName }}-{{ $branch }}
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 4200
+      targetPort: 4200
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: {{ .Values.appName }}-{{ $branch }}
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,apollo-require-preflight"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/allow-snippet-annotations: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2$3
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .Values.appName }}-{{ $branch }}.akamir.com
+{{- range $i, $subRoute := .Values.subRoutes }}
+        - {{ $subRoute }}-{{ $branch }}.akamir.com
+{{ end}}
+{{- range $i, $domain := $config.domains }}
+        - {{ $domain }}
+{{ end}}
+      secretName: cert-{{ .Values.appName }}-{{ $branch }}
+  rules:
+    - host: {{ .Values.appName }}-{{ $branch }}.akamir.com
+      http:
+        paths:
+          - path: /(search)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: meili-svc
+                port:
+                  number: 7700
+          - path: /()(backend)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(socket.io)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 4200
+{{- range $i, $subRoute := .Values.subRoutes }}
+    - host: {{ $subRoute }}-{{ $branch }}.akamir.com
+      http:
+        paths:
+          - path: /(search)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: meili-svc
+                port:
+                  number: 7700
+          - path: /()(backend)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(socket.io)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 4200     
+{{ end }}
+{{- range $i, $domain := $config.domains }}
+    - host: {{ $domain }}
+      http:
+        paths:
+          - path: /(search)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: meili-svc
+                port:
+                  number: 7700
+          - path: /()(backend)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(socket.io)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8080
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 4200    
+{{ end }}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "esModuleInterop": true,
+    "types": ["node"]
+  },
+  "files": [],
+  "references": [],
+  "include": ["**/*.ts", "**/*.tsx"]
+}

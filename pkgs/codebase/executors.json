@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "executors": {
+    "build-backend": {
+      "implementation": "./executors/build-backend/executor",
+      "schema": "./executors/build-backend/schema.json",
+      "description": "build-backend executor"
+    },
+    "serve-backend": {
+      "implementation": "./executors/serve-backend/executor",
+      "schema": "./executors/serve-backend/schema.json",
+      "description": "serve-backend executor"
+    },
+    "build-frontend": {
+      "implementation": "./executors/build-frontend/executor",
+      "schema": "./executors/build-frontend/schema.json",
+      "description": "build-frontend executor"
+    },
+    "serve-frontend": {
+      "implementation": "./executors/serve-frontend/executor",
+      "schema": "./executors/serve-frontend/schema.json",
+      "description": "serve-frontend executor"
+    },
+    "build-csr": {
+      "implementation": "./executors/build-csr/executor",
+      "schema": "./executors/build-csr/schema.json",
+      "description": "build-csr executor"
+    },
+    "dump-database": {
+      "implementation": "./executors/dump-database/executor",
+      "schema": "./executors/dump-database/schema.json",
+      "description": "dump-database executor"
+    },
+    "restore-database": {
+      "implementation": "./executors/restore-database/executor",
+      "schema": "./executors/restore-database/schema.json",
+      "description": "restore-database executor"
+    },
+    "serve-csr": {
+      "implementation": "./executors/serve-csr/executor",
+      "schema": "./executors/serve-csr/schema.json",
+      "description": "serve-csr executor"
+    },
+    "build-ios": {
+      "implementation": "./executors/build-ios/executor",
+      "schema": "./executors/build-ios/schema.json",
+      "description": "build-ios executor"
+    },
+    "serve-ios": {
+      "implementation": "./executors/serve-ios/executor",
+      "schema": "./executors/serve-ios/schema.json",
+      "description": "serve-ios executor"
+    },
+    "release-ios": {
+      "implementation": "./executors/release-ios/executor",
+      "schema": "./executors/release-ios/schema.json",
+      "description": "release-ios executor"
+    },
+    "build-android": {
+      "implementation": "./executors/build-android/executor",
+      "schema": "./executors/build-android/schema.json",
+      "description": "build-android executor"
+    },
+    "serve-android": {
+      "implementation": "./executors/serve-android/executor",
+      "schema": "./executors/serve-android/schema.json",
+      "description": "serve-android executor"
+    },
+    "release-android": {
+      "implementation": "./executors/release-android/executor",
+      "schema": "./executors/release-android/schema.json",
+      "description": "release-android executor"
+    },
+    "add-camera": {
+      "implementation": "./executors/add-camera/executor",
+      "schema": "./executors/add-camera/schema.json",
+      "description": "add-camera executor"
+    },
+    "add-contact": {
+      "implementation": "./executors/add-contact/executor",
+      "schema": "./executors/add-contact/schema.json",
+      "description": "add-contact executor"
+    },
+    "add-location": {
+      "implementation": "./executors/add-location/executor",
+      "schema": "./executors/add-location/schema.json",
+      "description": "add-location executor"
+    },
+    "release": {
+      "implementation": "./executors/release/executor",
+      "schema": "./executors/release/schema.json",
+      "description": "release executor"
+    }
+  }
+}

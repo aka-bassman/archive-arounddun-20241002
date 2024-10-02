@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+NEED_FIX=$(pnpm nx show projects --affected)
+PROJECTS=$(echo $NEED_FIX | tr ' ' ',')
+echo $PROJECTS
+# ! temporarily disable lint fix
+# pnpm nx run-many --target=lint --fix --projects=$PROJECTS --parallel=10
+git add .
+

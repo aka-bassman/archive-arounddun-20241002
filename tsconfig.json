@@ -1,0 +1,63 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "importHelpers": false,
+    "target": "es2016",
+    "module": "esnext",
+    "types": ["node", "webpack-env", "kakao.maps.d.ts", "jest"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "@codebase": ["pkgs/codebase/index.ts"],
+      "@codebase/*": ["pkgs/codebase/*"],
+      "@contract": ["pkgs/contract/index.ts"],
+      "@contract/*": ["pkgs/contract/*"],
+      "@core": ["pkgs/core/index.ts"],
+      "@core/*": ["pkgs/core/*"],
+      "@syrs/*": ["apps/syrs/*"],
+      "@shared": ["libs/shared/index.ts"],
+      "@shared/*": ["libs/shared/*"],
+      "@social": ["libs/social/index.ts"],
+      "@social/*": ["libs/social/*"],
+      "@util": ["libs/util/index.ts"],
+      "@util/*": ["libs/util/*"]
+    }
+  },
+  "exclude": ["**/node_modules", "tmp", "**/ios", "**/android"],
+  "references": [
+    {
+      "path": "./apps/syrs/tsconfig.json"
+    },
+    {
+      "path": "./pkgs/contract/tsconfig.json"
+    },
+    {
+      "path": "./pkgs/core/tsconfig.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.json"
+    },
+    {
+      "path": "./libs/social/tsconfig.json"
+    },
+    {
+      "path": "./libs/util/tsconfig.json"
+    },
+    {
+      "path": "./pkgs/codebase/tsconfig.json"
+    }
+  ]
+}

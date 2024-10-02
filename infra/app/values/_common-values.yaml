@@ -1,0 +1,182 @@
+appName: undefined
+subRoutes: []
+debug: 
+  domains: []
+  backend:
+    federation:
+      replicas: 1
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+    batch:
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+  frontend:
+    replicas: 1
+    resources:
+      requests:
+        memory: 250M
+        cpu: "0.1"
+      limits:
+        memory: 1G
+        cpu: "0.5"
+  redis:
+    replicas: 1
+    resources:
+      requests:
+        cpu: "0.05"
+        memory: 200M
+      limits:
+        cpu: "1"
+        memory: 2G
+  mongo:
+    replicas: 1
+    storage:
+      data: 2G
+      logs: 0.5G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G
+  meili:
+    storage:
+      data: 2G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G
+develop: 
+  domains: []
+  backend:
+    federation:
+      replicas: 1
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+    batch:
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+  frontend:
+    replicas: 1
+    resources:
+      requests:
+        memory: 250M
+        cpu: "0.1"
+      limits:
+        memory: 1G
+        cpu: "0.5"
+  redis:
+    replicas: 1
+    resources:
+      requests:
+        cpu: "0.05"
+        memory: 200M
+      limits:
+        cpu: "1"
+        memory: 2G
+  mongo:
+    replicas: 1
+    storage:
+      data: 2G
+      logs: 0.5G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G
+  meili:
+    storage:
+      data: 2G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G
+main: 
+  domains: []
+  backend:
+    federation:
+      replicas: 1
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+    batch:
+      resources:
+        requests:
+          memory: 250M
+          cpu: "0.05"
+        limits:
+          memory: 1G
+          cpu: "0.5"
+  frontend:
+    replicas: 1
+    resources:
+      requests:
+        memory: 250M
+        cpu: "0.1"
+      limits:
+        memory: 1G
+        cpu: "0.5"
+  redis:
+    replicas: 1
+    resources:
+      requests:
+        cpu: "0.05"
+        memory: 200M
+      limits:
+        cpu: "1"
+        memory: 2G
+  mongo:
+    replicas: 1
+    storage:
+      data: 2G
+      logs: 0.5G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G
+  meili:
+    storage:
+      data: 2G
+    resources:
+      requests:
+        cpu: "0.15"
+        memory: 200M
+      limits:
+        cpu: "4"
+        memory: 4G

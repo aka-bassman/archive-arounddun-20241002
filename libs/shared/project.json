@@ -1,0 +1,10 @@
+{
+  "name": "shared",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared",
+  "projectType": "library",
+  "targets": {
+    "test": { "executor": "@nx/jest:jest" },
+    "lint": { "executor": "@nx/linter:eslint" }
+  }
+}

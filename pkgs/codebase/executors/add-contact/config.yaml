@@ -1,0 +1,20 @@
+vars:
+platforms:
+  ios:
+    targets:
+      App:
+        plist:
+          - replace: false
+            file: App/Info.plist
+            entries:
+              - NSContactsUsageDescription: "$(PRODUCT_NAME) requires access to the contacts to add new contacts."
+  android:
+    manifest:
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.READ_CONTACTS"/>
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.WRITE_CONTACTS"/>

@@ -1,0 +1,28 @@
+vars:
+platforms:
+  ios:
+    targets:
+      App:
+        plist:
+          - replace: false
+            file: App/Info.plist
+            entries:
+              #camera
+              - NSCameraUsageDescription: "$(PRODUCT_NAME) requires access to the camera to take photos."
+              - NSPhotoLibraryAddUsageDescription: "$(PRODUCT_NAME) requires access to the photo library to take photos."
+              - NSPhotoLibraryUsageDescription: "$(PRODUCT_NAME) requires access to the photo library to take photos."
+  android:
+    #camera
+    manifest:
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+      - file: AndroidManifest.xml
+        target: manifest
+        inject: |
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

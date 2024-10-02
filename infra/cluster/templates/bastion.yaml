@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bastion
+  namespace: infra-system
+  labels:
+    app: bastion
+spec:
+  containers:
+    - name: install-ssh
+      image: alpine:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          apk update &&
+          apk add --no-cache openssh-server &&
+          sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/' /etc/ssh/sshd_config &&
+          sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+          sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config &&
+          echo "root:akamir" | chpasswd &&
+          mkdir -p /root/.ssh &&
+          chmod 700 /root/.ssh &&
+          ssh-keygen -A &&
+          /usr/sbin/sshd -D &&
+          sleep infinity
+      volumeMounts:
+        - name: shared-volume
+          mountPath: /etc/ssh
+  volumes:
+    - name: shared-volume
+      emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bastion-svc
+  namespace: infra-system
+spec:
+  type: NodePort
+  selector:
+    app: bastion
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
+      nodePort: 32767
