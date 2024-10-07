@@ -21,6 +21,7 @@ yarn.lock
 *.launch
 .settings/
 *.sublime-workspace
+.nx
 
 # IDE - VSCode
 .vscode/*
