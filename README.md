@@ -19,12 +19,14 @@ npm i -g nx pnpm
 pnpm i -w
 
 cat <<EOF >> .env
-# ENV For Server => local | debug | develop | main
-SERVER_ENV=debug.local
-# Run Mode For Server => federation | batch | all
+# debug, staging, master
+NEXT_PUBLIC_ENV=debug
+# local, cloud, edge...
+NEXT_PUBLIC_OPERATION_MODE=local
+# federation, batch, all
 SERVER_MODE=federation
-# ENV For Client => local | debug | develop | main
-NEXT_PUBLIC_CLIENT_ENV=debug.local
+# trace, verbose, debug, log, info, warn, error
+NEXT_PUBLIC_LOG_LEVEL=log
 ANALYZE=false
 EOF
 
