@@ -449,7 +449,7 @@ const signalDictionary = {
   analyzingBottom: [
     "For an accurate analysis, this may take a little time.\nThrough the results, you can check your skin age, aging condition, sensitivity,\nand oil-water balance, and receive tailored solutions.",
     "정확한 분석을 위해 조금의 시간이 걸릴 수 있습니다.\n결과를 통해 자신의 피부 나이와 에이징 상태, 민감도, 유수분 밸런스를 확인하고\n솔루션을 받아보세요.",
-    "正確な分析のため、少し時間がかかる場合があります。\n結果を通じて、ご自身の肌年齢やエイジング状態、敏感度、油分と水分のバランスを確認し、\nソリューションを受け取ってください。",
+    "正確な分析のため、少し時間がかかる場合があります。\n結果を通じて、ご自身の肌年齢やエイジング状態、敏感度、\n 油分と水分のバランスを確認し、\nソリューションを受け取ってください。",
     "เพื่อการวิเคราะห์ที่แม่นยำ อาจใช้เวลาสักครู่\nผ่านผลลัพธ์นี้ คุณสามารถตรวจสอบอายุผิว สภาพการเกิดริ้วรอย ความไว\nและสมดุลน้ำมัน-น้ำ และรับแนวทางการดูแลที่เหมาะสมกับคุณ",
   ],
   errorMsg: [

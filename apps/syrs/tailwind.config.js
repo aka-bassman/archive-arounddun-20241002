@@ -11,7 +11,7 @@ module.exports = withBase(__dirname, {
     "syrs-selected": "#D1C2B6", // 선택된 색
     "syrs-logo": "#9F8B7B", // #9F8B7B 로고 색
     "syrs-label": "#BCAB9D", // 라벨 색
-    "syrs-selector": "#F1EFEC", // 셀렉터 색
+    "syrs-selector": "#f1efec", // 셀렉터 색
     "syrs-loading": "#807C74",
   },
   fonts: ["gilda"],

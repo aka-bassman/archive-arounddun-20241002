@@ -48,7 +48,7 @@ export default function Page() {
           value={testForm.name}
           onChange={st.do.setNameOnTest}
           className="w-full text-syrs-font text-opacity-80 text-sm max-w-[768px]"
-          inputClassName=" border-none h-8 mt-2 bg-[#fffdf7]"
+          inputClassName=" border-none h-8 mt-2 bg-syrs-selector"
         />
         <div className="flex gap-12 flex-wrap">
           <Field.DateDropdown
@@ -57,9 +57,9 @@ export default function Page() {
             value={testForm.dateOfBirth}
             onChange={st.do.setDateOfBirthOnTest}
             className="text-syrs-font text-opacity-80 text-sm "
-            dropdownClassName="w-full border-none bg-[#fffdf7] mt-2 h-8 min-w-14 px-4 "
+            dropdownClassName="w-full border-none bg-syrs-selector mt-2 h-8 min-w-14 px-4 "
             selectedClassName="text-primary bg-syrs-bg"
-            selectorClassName=" bg-[#fffdf7] text-center "
+            selectorClassName=" bg-syrs-selector text-center "
           />
           <Field.Dropdown
             label={l("test.lang")}
@@ -76,9 +76,9 @@ export default function Page() {
               router.setLang(e);
             }}
             className="w-full max-w-32 text-syrs-font text-opacity-80 text-sm"
-            dropdownClassName="w-full border-none bg-[#fffdf7] mt-2 h-8 "
+            dropdownClassName="w-full border-none bg-syrs-selector mt-2 h-8 "
             selectedClassName="text-primary bg-syrs-bg"
-            selectorClassName=" bg-[#fffdf7] text-center "
+            selectorClassName=" bg-syrs-selector text-center "
           />
         </div>
         <Field.Text
@@ -87,7 +87,7 @@ export default function Page() {
           value={testForm.email}
           onChange={st.do.setEmailOnTest}
           className="w-full text-syrs-font text-opacity-80 text-sm max-w-[768px]"
-          inputClassName=" border-none h-8 mt-2 bg-[#fffdf7]"
+          inputClassName=" border-none h-8 mt-2 bg-syrs-selector"
         />
       </div>
       <div className=" flex sm:absolute bottom-8 right-6">

@@ -59,7 +59,7 @@ export const SolutionLoading = ({ topRender, bottomRender, setClose, className }
         >
           <DodboGi />
         </animated.div>
-        <Image src="/Mask group.svg" alt="logo" className=" -z-20 rounded-xl bg-white inset-4" fill />
+        <Image src="/Image1123.png" alt="logo" className=" -z-20 rounded-xl bg-white inset-4" fill />
       </div>
       {bottomRender?.()}
     </div>
@@ -72,9 +72,9 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
     to: async (next) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, no-constant-condition
       while (true) {
-        await next({ x: 0, y: -20 });
-        await next({ x: 150, y: 50 });
-        await next({ x: 50, y: 170 });
+        await next({ x: 300 - 50, y: 30 });
+        await next({ x: 150 - 50, y: 165 });
+        await next({ x: 0, y: 0 });
       }
     },
     config: { duration: 2000, easing: easings.easeInOutQuad },
@@ -97,7 +97,7 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
         <AiOutlineClose />
       </div>
       <div className=" text-xl mb-36">{topRender?.()}</div>
-      <div className=" w-[291] h-[228]  mb-24">
+      <div className=" w-[325px] h-[215px] relative  mb-24">
         <animated.div
           style={{
             position: "absolute",
@@ -106,7 +106,7 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
         >
           <DodboGi />
         </animated.div>
-        <Image src="/Group 15237.svg" alt="logo" className=" rounded bg-white" width={191} height={228} />
+        <Image src="/Image1123.png" alt="logo" className=" -z-20 rounded-md bg-white inset-4" fill />
       </div>
       {bottomRender?.()}
     </div>
