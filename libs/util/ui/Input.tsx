@@ -45,7 +45,7 @@ export const Input = ({
   const status: "error" | "warning" | "success" | null =
     !nullable && !value ? null : !value.length ? "warning" : validateResult === true ? "success" : "error";
   const invalidMessage =
-    !value.length || validateResult === true
+    (value && !value.length) || validateResult === true
       ? null
       : validateResult === false
         ? l("util.invalidValueError")
@@ -134,11 +134,11 @@ const TextArea = ({
   const status: "error" | "warning" | "success" =
     !nullable && !value.length ? "warning" : validateResult === true ? "success" : "error";
   const invalidMessage =
-    !value.length || validateResult === true
-      ? null
-      : validateResult === false
-        ? l("util.invalidValueError")
-        : validateResult;
+    // !value.length || validateResult === true
+    //   ? null
+    //   : validateResult === false
+    //     ? l("util.invalidValueError")
+    validateResult;
   const statusClass =
     status === "error"
       ? "textarea-error"
