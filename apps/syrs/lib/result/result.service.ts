@@ -96,14 +96,14 @@ export class ResultService extends DbService(db.resultDb) {
         title: `${test.name}님 시르즈를 방문해주셔서 감사합니다.`,
         content: `
           <p>피부 진단 테스트 결과를 확인하고 피부 타입에 맞는 시르즈의 신시어 키트를 받아가세요.</p>
-          <p>${test.lang}님의 피부 진단에 맞춰 시르즈의 스킨 컨설턴트가 정성스럽게 준비해드립니다.</p>
+          <p>${test.name}님의 피부 진단에 맞춰 시르즈의 스킨 컨설턴트가 정성스럽게 준비해드립니다.</p>
           <p>제품에 대한 자세한 정보는 추천 제품을 클릭하여 확인할 수 있습니다.</p>
           <p>Sincere mind for your skin, SYRS</p>
         `,
         buttonText: "피부 타입 확인하기",
       },
       ja: {
-        title: `${test.lang}様、SYRSをご訪問いただきありがとうございます。`,
+        title: `${test.name}様、SYRSをご訪問いただきありがとうございます。`,
         content: `
           <p>お肌の診断テストの結果をご確認いただき、お肌のタイプに合わせたSYRSのシンシアキットをお受け取りください。</p>
           <p>お客様の肌診断に基づいて、SYRSのスキンコンサルタントが心を込めて準備いたします。</p>

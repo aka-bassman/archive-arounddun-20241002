@@ -19,10 +19,11 @@ export default function Page({ params: { resultId } }) {
   const result = st.use.result();
 
   const pageTitle = {
-    typeA: "[Type A - Expression Lines Skin]",
-    typeB: "[Type B - Derteriorated Skin]",
-    typeC: "[Type C - Pigmented Skin]",
-    typeD: "[Type D - Unbalanced Skin]",
+    typeA: "[ Type A - Expression Lines Skin]",
+    typeB: "[ Type B - Derteriorated Skin]",
+    typeC: "[ Type C - Pigmented Skin]",
+    typeD: "[ Type D - Unbalanced Skin]",
+    typeE: "[ Type E - Dehydrated Skin]",
   };
   type Products =
     | "antiAgingAmpule"
@@ -176,12 +177,12 @@ export default function Page({ params: { resultId } }) {
       <div className=" text-syrs-font text-opacity-80 sm:text-4xl text-xl mb-8">
         {pageTitle[result.data.type as keyof typeof pageTitle]}
       </div>
-      <div className="text-syrs-label text-lg sm:px-6">{l("result.skinAge")}</div>
-      <div className="flex w-full mb-8 px-6">
-        <div className=" sm:text-8xl text-6xl text-opacity-80 sm:mx-6 text-syrs-font font-medium">
+      <div className="text-syrs-label text-sm sm:text-lg sm:px-6 mb-2 sm:mb-0">{l("result.skinAge")}</div>
+      <div className="flex w-full mb-8 sm:px-6 px-2">
+        <div className=" sm:text-8xl text-7xl text-opacity-80 sm:mx-6 ml-0 text-syrs-font font-medium">
           {result.data.skinAge}
         </div>
-        <div className=" flex-grow sm:min-w-96 sm:text-sm text-xs ml-4 mt-2 break-words">{result.data.overview}</div>
+        <div className=" flex-grow sm:min-w-96 text-sm ml-4 mt-2 break-words">{result.data.overview}</div>
       </div>
       <ResultReactive result={result} isSmall={isSmall} />
       <div className=" text-primary mt-8 text-opacity-65 text-xl mb-4">

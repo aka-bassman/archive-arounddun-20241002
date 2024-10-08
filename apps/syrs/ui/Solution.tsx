@@ -1,4 +1,3 @@
-"use client";
 import { Image, Link } from "@util/ui";
 import { st } from "@syrs/client";
 export interface SolutionProps {
@@ -107,7 +106,7 @@ const SmallSolution = ({
 }: SolutionProps) => {
   return (
     <Link
-      className=" w-[300px]  overflow-y-clip h-[253px] bg-white relative sm:rounded-xl rounded-sm overflow-hidden z-0"
+      className=" w-[300px]  overflow-y-clip h-[253px] bg-white relative rounded-[0.3rem]  overflow-hidden z-0"
       href={href}
     >
       <Image
@@ -118,7 +117,7 @@ const SmallSolution = ({
         height={253}
         quality={100}
       />
-      <div className="w-full h-full px-3 py-2 flex flex-col">
+      <div className="w-full h-full px-3 py-2 flex flex-col overflow-hidden">
         {footer && (
           <div className="absolute flex gap-2 text-syrs-font text-opacity-60 bottom-4 right-4 text-[6px] leading-[7px]  tracking-tighter">
             {footer.map((f, i) => (

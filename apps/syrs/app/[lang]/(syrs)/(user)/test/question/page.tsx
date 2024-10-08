@@ -123,9 +123,7 @@ export default function Page() {
           <div className="text-center text-syrs-font text-opacity-70 text-2xl">Error Message:</div>
           <div className=" px-12 text-sm">
             <br />
-            {errorComponent}{" "}
-            {" testError  \nasdfas dfasdfasd fasas dfasdf asdfa sdfasa sdfas df asd  fasd fasa  d fa sdf asdfa sdf a sasd f   asdf  asdfa  sd fasa sdfas  dfas  d  fasd fasa    sdfa s d  fasdf  asd fas a  sdf  asdfa sd fas d fa s asdfasd  fasd fasd fasas  dfasdfasdfa  sd f asas dfasdf  asdfa sdfa s\n" +
-              ":: need to remove on production"}
+            {errorComponent}
           </div>
           <div
             className="btn mt-8 border-syrs-logo text-syrs-logo text-lg border-opacity-40 text-opacity-40 hover:border-none hover:bg-syrs-selected hover:text-white font-semibold px-6 py-0 rounded-md"
