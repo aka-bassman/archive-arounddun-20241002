@@ -174,19 +174,19 @@ export default function Page({ params: { resultId } }) {
   if (!result) return null;
   return (
     <div className="w-full h-full flex flex-col text-syrs-font">
-      <div className=" text-syrs-font text-opacity-80 sm:text-4xl text-xl mb-8">
+      <div className=" text-syrs-font text-opacity-80 sm:text-4xl text-xl sm:mb-12 mb-8">
         {pageTitle[result.data.type as keyof typeof pageTitle]}
       </div>
-      <div className="text-syrs-label text-sm sm:text-lg sm:px-6 mb-2 sm:mb-0">{l("result.skinAge")}</div>
-      <div className="flex w-full mb-8 sm:px-6 px-2">
+      <div className="text-syrs-label text-sm sm:text-lg sm:px-4 mb-2 sm:mb-0">{l("result.skinAge")}</div>
+      <div className="flex w-full mb-8 sm:px-4 px-2">
         <div className=" sm:text-8xl text-7xl text-opacity-80 sm:mx-6 ml-0 text-syrs-font font-medium">
           {result.data.skinAge}
         </div>
         <div className=" flex-grow sm:min-w-96 text-sm ml-4 mt-2 break-words">{result.data.overview}</div>
       </div>
       <ResultReactive result={result} isSmall={isSmall} />
-      <div className=" text-primary mt-8 text-opacity-65 text-xl mb-4">
-        {result.data.type.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/^./, (str) => str.toUpperCase())} Solution
+      <div className=" text-primary mt-8 text-opacity-65 text-sm mb-4 sm:text-xl">
+        {result.data.type.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/^./, (str) => str.toUpperCase())}. Solution
       </div>
       <div className="carousel carousel-center space-x-2 min-h-max sm:mb-0 mb-8 sm:min-w-[320px] sm:space-x-4 rounded-none">
         {solutions[result.data.type].map((solution, i) => (

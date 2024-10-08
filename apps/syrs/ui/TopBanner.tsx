@@ -6,7 +6,7 @@ export const TopBanner = () => {
   return (
     <Link
       href={"/"}
-      className="w-full flex md:justify-start justify-center "
+      className="w-full flex md:justify-start justify-center sm:mb-0 -mb-4"
       onClick={() => {
         st.do.newTest();
       }}
