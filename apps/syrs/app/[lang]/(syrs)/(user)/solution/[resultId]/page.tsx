@@ -79,13 +79,6 @@ export default function Page({ params: { resultId, lang } }) {
   }, [result?.testId, result]);
   return (
     <div className="w-full h-full flex items-center flex-col flex-grow-0">
-      <button
-        onClick={() => {
-          setIsAnalyzing(true);
-        }}
-      >
-        loading test button :: need to remove on production
-      </button>
       <SolutionLoading
         className={isAnalyzing ? "" : " hidden"}
         bottomRender={() => <div className="text-lg text-center text-syrs-loading">{l("result.analyzingBottom")}</div>}
@@ -139,33 +132,7 @@ export default function Page({ params: { resultId, lang } }) {
           )}
         />
       </div>
-      <div className="flex w-full justify-center">
-        {/* <button
-          disabled={!image}
-          className="btn border-syrs-logo text-xl border-opacity-40 border-none bg-syrs-selected text-white  font-semibold px-6 py-0 rounded-md mt-20 disabled:border-syrs-logo disabled:bg-syrs-logo disabled:text-syrs-logo disabled:cursor-not-allowed disabled:bg-opacity-0 disabled:text-opacity-20"
-          onClick={async () => {
-            setIsAnalyzing(true);
-            if (!image) return;
-            await st.do.calculateImprvement(
-              resultId,
-              image.url,
-              (result) => {
-                router.push("/" + lang + "/result/" + result.id);
-                setIsAnalyzing(false);
-              },
-              (error) => {
-                setErrorComponent(error.message);
-
-                (document.getElementById("ErrModal") as HTMLDialogElement).showModal();
-                setIsAnalyzing(false);
-              }
-            );
-            setIsAnalyzing(false);
-          }}
-        >
-          Start
-        </button> */}
-      </div>
+      <div className="flex w-full justify-center"></div>
     </div>
   );
 }

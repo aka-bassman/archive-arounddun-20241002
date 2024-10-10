@@ -68,7 +68,7 @@ const BigSolution = ({
       className=" w-[308px] h-[412px] overflow-y-clip  min-h-max flex flex-col relative rounded-xl px-4 overflow-hidden z-0"
       href={href}
     >
-      <Image src={"/products/" + src} alt={title} fill className=" inset-0 -z-10 !object-cover" quality={100} />
+      <Image src={"/products/" + src} alt={title} fill className=" inset-0 -z-10 !object-cover" />
       <div className="absolute text-primary text-opacity-40 top-2 left-4 text-xs ">Solution. {index}</div>
       {footer && (
         <div className="absolute text-syrs-font text-opacity-60 bottom-4 right-4 text-[7px] leading-[10px]">
@@ -105,19 +105,15 @@ const SmallSolution = ({
   footer,
 }: SolutionProps) => {
   return (
-    <Link
-      className=" w-[300px]  overflow-y-clip h-[253px] bg-white relative rounded-[0.3rem]  overflow-hidden z-0"
-      href={href}
-    >
+    <Link className=" w-[300px]  overflow-y-clip h-[253px] bg-white relative rounded overflow-hidden z-0" href={href}>
       <Image
         src={"/products/M)" + src}
         alt={title + "m"}
         className="inset-0 -z-10 !object-cover absolute w-full h-full"
         width={300}
-        height={253}
-        quality={100}
+        height={260}
       />
-      <div className="w-full h-full px-3 py-2 flex flex-col overflow-hidden">
+      <div className="w-full h-full px-3 py-2 flex flex-col">
         {footer && (
           <div className="absolute flex gap-2 text-syrs-font text-opacity-60 bottom-4 right-4 text-[6px] leading-[7px]  tracking-tighter">
             {footer.map((f, i) => (
