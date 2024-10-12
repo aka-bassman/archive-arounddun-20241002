@@ -4,7 +4,7 @@ import { env } from "@syrs/env/env.client";
 import { fetch } from "@syrs/client";
 import localFont from "next/font/local";
 
-export const metadata = { title: "Syrs AI Lab", manifest: "/manifest.json" };
+export const metadata = { title: "SYRS AI Lab", manifest: "/manifest.json" };
 
 const gilda = localFont({
   src: "../../../public/libs/shared/fonts/GildaDisplay-Regular.ttf",
