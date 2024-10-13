@@ -35,7 +35,7 @@ export default function Page({ params: { resultId, lang } }) {
   return (
     <div className="w-full h-full flex items-center flex-col flex-grow-0">
       <SolutionLoading
-        className={isAnalyzing ? "" : " hidden"}
+        className={isAnalyzing ? "" : " hidden "}
         bottomRender={() => <div className="text-lg text-center text-syrs-loading">{l("result.analyzingBottom")}</div>}
         topRender={() => (
           <div className=" text-xl font-semibold text-syrs-font">

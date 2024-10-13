@@ -58,8 +58,8 @@ export const SolutionLoading = ({ topRender, bottomRender, setClose, className }
           <DodboGi />
         </animated.div>
         <Image
-          src="/Image1123.png"
-          alt="logo"
+          src="/image1123.png"
+          alt="logoSol"
           className=" -z-20 rounded-xl bg-white inset-4"
           width={300}
           height={215}
