@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ai.syrs.ko",
+        hostname: "ai.syrs.kr",
       },
     ],
   },
