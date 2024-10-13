@@ -86,7 +86,7 @@ export default function Page() {
   return (
     <div className="w-full flex flex-col items-center">
       <Loading
-        className={isAnalyzing ? "" : " hidden"}
+        className={isAnalyzing ? "" : " hidden "}
         bottomRender={() => <div className="text-lg text-center text-syrs-loading">{l("result.analyzingBottom")}</div>}
         topRender={() => (
           <div className=" text-xl font-semibold text-syrs-font">
