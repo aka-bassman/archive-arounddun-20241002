@@ -50,7 +50,7 @@ export class ResultStore extends stateOf(fetch.resultGql, {
     return;
   }
 
-  async setImprovementImage(image: shared.File | null, onSuccess?: (image: shared.File) => void | Promise<void>) {
+  async setImprovementImage(image: shared.File, onSuccess?: (image: shared.File) => void | Promise<void>) {
     this.set({ improvementImage: image });
     onSuccess && (await onSuccess(image));
   }
