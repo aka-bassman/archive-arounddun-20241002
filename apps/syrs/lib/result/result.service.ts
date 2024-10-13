@@ -30,6 +30,7 @@ export class ResultService extends DbService(db.resultDb) {
       throw e;
     });
     if (!gptJson) {
+      this.logger.error("GPT Response is empty or invalid");
       throw new Error("GPT Response is empty or invalid");
     }
     const result = await this.resultModel.createResult({
@@ -159,7 +160,7 @@ export class ResultService extends DbService(db.resultDb) {
     </div>
     <div class="mobile-content" style="font-size: 16px; color: #666666; line-height: 1.5;">
       ${locale[test.lang].content}
-      <a href=${`"https://syrs-debug.akamir.com/${test.lang}/result/${updatedResult.id}"`} class="mobile-button" style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #d5c4b4; color: #ffffff; text-align: center; text-decoration: none; border-radius: 5px; font-size: 16px;">${locale[test.lang].buttonText}</a>
+      <a href=${`"https://ai.syrs.kr/${test.lang}/result/${updatedResult.id}"`} class="mobile-button" style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #d5c4b4; color: #ffffff; text-align: center; text-decoration: none; border-radius: 5px; font-size: 16px;">${locale[test.lang].buttonText}</a>
     </div>
     <img src=${`"${footerUrl}"`} alt="Footer Image" class="mobile-footer-image" style="width: 100%; max-width: 1000px; height: auto; display: block; margin-top: 20px;">
   </div>

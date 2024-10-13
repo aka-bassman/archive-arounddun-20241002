@@ -3,6 +3,15 @@ const { withBase } = require(process.env.NX_CLI_SET ? "../../pkgs/core/next/next
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ai.syrs.ko",
+      },
+    ],
+  },
+};
 
 module.exports = withBase("syrs", nextConfig);

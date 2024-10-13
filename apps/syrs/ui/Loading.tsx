@@ -1,6 +1,4 @@
-"use client";
 import { AiOutlineClose } from "react-icons/ai";
-
 import { Image } from "@util/ui";
 import { animated, easings, useSpring } from "@react-spring/web";
 import { clsx } from "@core/client";
@@ -72,9 +70,9 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
     to: async (next) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, no-constant-condition
       while (true) {
-        await next({ x: 300 - 50, y: 30 });
-        await next({ x: 150 - 50, y: 165 });
-        await next({ x: 0, y: 0 });
+        await next({ x: 0, y: -20 });
+        await next({ x: 150, y: 50 });
+        await next({ x: 50, y: 170 });
       }
     },
     config: { duration: 2000, easing: easings.easeInOutQuad },
@@ -97,7 +95,7 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
         <AiOutlineClose />
       </div>
       <div className=" text-xl mb-36">{topRender?.()}</div>
-      <div className=" w-[325px] h-[215px] relative  mb-24">
+      <div className=" w-[291] h-[228]  mb-24">
         <animated.div
           style={{
             position: "absolute",
@@ -106,7 +104,7 @@ export const Loading = ({ topRender, bottomRender, setClose, className }: Loadin
         >
           <DodboGi />
         </animated.div>
-        <Image src="/Image1123.png" alt="logo" className=" -z-20 rounded-md bg-white inset-4" fill />
+        <Image src="/Group 15237.svg" alt="logo" className=" rounded bg-white" width={191} height={228} />
       </div>
       {bottomRender?.()}
     </div>
