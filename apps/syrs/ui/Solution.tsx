@@ -65,10 +65,16 @@ const BigSolution = ({
 }: SolutionProps) => {
   return (
     <Link
-      className=" w-[308px] h-[412px] overflow-y-clip  min-h-max flex flex-col relative rounded-xl px-4 overflow-hidden z-0"
+      className=" w-[308px] h-[412px] overflow-y-clip flex flex-col relative rounded-xl px-4 overflow-hidden z-0"
       href={href}
     >
-      <Image src={"/products/" + src} alt={title} fill className=" inset-0 -z-10 !object-cover" />
+      <Image
+        src={"/products/" + src}
+        alt={title}
+        className="absolute inset-0 -z-10 !object-cover"
+        width={412}
+        height={308}
+      />
       <div className="absolute text-primary text-opacity-40 top-2 left-4 text-xs ">Solution. {index}</div>
       {footer && (
         <div className="absolute text-syrs-font text-opacity-60 bottom-4 right-4 text-[7px] leading-[10px]">

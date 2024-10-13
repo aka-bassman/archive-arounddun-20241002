@@ -188,9 +188,9 @@ export default function Page({ params: { resultId } }) {
       <div className=" text-primary mt-8 text-opacity-65 text-sm mb-4 sm:text-xl">
         {result.data.type.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/^./, (str) => str.toUpperCase())}. Solution
       </div>
-      <div className="carousel carousel-center space-x-2 min-h-max sm:mb-0 mb-8 sm:min-w-[320px] sm:space-x-4 rounded-none">
+      <div className="carousel carousel-center space-x-4 min-h-max sm:mb-0 mb-8 sm:min-w-[320px] rounded-none">
         {solutions[result.data.type].map((solution, i) => (
-          <div className="carousel-item min-h-max" key={i}>
+          <div className="carousel-item " key={i}>
             <Solution {...solution} index={i + 1} isSmall={isSmall} />
           </div>
         ))}
