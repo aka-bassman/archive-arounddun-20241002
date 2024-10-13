@@ -37,9 +37,9 @@ export class ResultSignal extends DbSignal(cnst.resultCnst, Srvs, {
   @Query.User(() => cnst.Result, { timeout: 0 })
   async calculateImprvement(
     @Arg.Param("resultId", () => String) resultId: string,
-    @Arg.Param("imageUrl", () => String) imageUrl: string
+    @Arg.Param("imageId", () => String) imageId: string
   ) {
-    const result = await this.resultService.calculateImprvement(resultId, imageUrl);
+    const result = await this.resultService.calculateImprvement(resultId, imageId);
     return resolve<cnst.Result>(result);
   }
   // * Public Slice

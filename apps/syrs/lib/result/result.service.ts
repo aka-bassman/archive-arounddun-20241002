@@ -14,7 +14,27 @@ export class ResultService extends DbService(db.resultDb) {
   @Srv() protected readonly fileService: srv.shared.FileService;
   @Srv() protected readonly imageHostingService: srv.ImageHostingService;
   @Use() protected readonly gmailApi: GmailApi;
-
+  async pollingFileActivated(fileId: string): Promise<db.shared.File | undefined> {
+    const interval = 1000;
+    // polling limit
+    const limit = 10;
+    let count = 0;
+    return new Promise((resolve, reject) => {
+      const timer = setInterval(async () => {
+        const file = await this.fileService.getFile(fileId);
+        if (file?.status === "active") {
+          clearInterval(timer);
+          resolve(file);
+        }
+        // polling limit
+        if (count >= limit) {
+          clearInterval(timer);
+          reject(new Error("File activation failed"));
+        }
+        count++;
+      }, interval);
+    });
+  }
   async summarize(): Promise<cnst.ResultSummary> {
     return {
       ...(await this.resultModel.getSummary()),
@@ -23,8 +43,11 @@ export class ResultService extends DbService(db.resultDb) {
   async calculateResult(testId: string, userId: string): Promise<db.Result> {
     const test = await this.testService.getTest(testId);
     const prompt = await this.promptService.getDefaultPrompt();
-    const imageUrl = (await this.fileService.getFile(test.image)).url;
-    this.logger.info(`Calculating result for test ${testId} and user ${userId}`);
+    const image = await this.pollingFileActivated(test.image);
+    if (!image) {
+      throw new Error("Image activation failed");
+    }
+    const imageUrl = image.url;
     const gptJson = await getGptResponse(test, prompt, imageUrl).catch((e: unknown) => {
       this.logger.error((e as Error).message + "calculation failed");
       throw e;
@@ -54,10 +77,15 @@ export class ResultService extends DbService(db.resultDb) {
     //   });
     return result;
   }
-  async calculateImprvement(resultId: string, imageUrl: string): Promise<db.Result> {
+  async calculateImprvement(resultId: string, imageId: string): Promise<db.Result> {
     const result = await this.resultModel.getResult(resultId);
     const prompt = await this.promptService.getDefaultPrompt();
     const test = await this.testService.getTest(result.testId);
+    const image = await this.pollingFileActivated(imageId);
+    if (!image) {
+      throw new Error("Image activation failed");
+    }
+    const imageUrl = image.url;
 
     this.logger.info(`Calculating result for test ${result.testId} and testName ${test.name}`);
     const gptJson = await getGptPhase2Response(result, prompt, imageUrl, test.lang).catch((e: unknown) => {

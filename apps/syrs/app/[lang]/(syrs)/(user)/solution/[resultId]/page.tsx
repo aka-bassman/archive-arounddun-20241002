@@ -29,51 +29,6 @@ export default function Page({ params: { resultId, lang } }) {
     fileList: FileList | File[],
     id?: string | undefined
   ) => Promise<cnst.File[]>;
-  useInterval(async () => {
-    if (image?.status !== "uploading") return;
-    await st.do.setImprovementImage(await fetch.file(image.id));
-  }, 1000);
-  useEffect(() => {
-    if (!image?.url) return;
-    setIsAnalyzing(true);
-    void st.do
-      .calculateImprvement(
-        resultId,
-        image.url,
-        (result) => {
-          router.push("/result/" + result.id);
-          setIsAnalyzing(false);
-        },
-        (error) => {
-          setErrorComponent(error.message);
-          (document.getElementById("ErrModal") as HTMLDialogElement).showModal();
-          setIsAnalyzing(false);
-        }
-      )
-      .then(() => {
-        setIsAnalyzing(false);
-      });
-  }, [image]);
-  useEffect(() => {
-    st.do
-      .viewResult(resultId)
-      .then(() => {
-        st.do.setImprovementImage(null);
-      })
-      .catch(() => {
-        st.do.setImprovementImage(null);
-      });
-  }, []);
-  useEffect(() => {
-    st.do
-      .viewResult(resultId)
-      .then(() => {
-        st.do.setImprovementImage(null);
-      })
-      .catch(() => {
-        st.do.setImprovementImage(null);
-      });
-  }, [resultId]);
   useEffect(() => {
     void (result && st.do.viewTest(result.testId));
   }, [result?.testId, result]);
@@ -116,6 +71,24 @@ export default function Page({ params: { resultId, lang } }) {
           onSave={async (file) => {
             const files = Array.isArray(file) ? await addFiles(file) : await addFiles([file] as File[]);
             await st.do.setImprovementImage(files[0]);
+            setIsAnalyzing(true);
+            void st.do
+              .calculateImprvement(
+                resultId,
+                files[0].id,
+                (result) => {
+                  router.push("/result/" + result.id);
+                  setIsAnalyzing(false);
+                },
+                (error) => {
+                  setErrorComponent(error.message);
+                  (document.getElementById("ErrModal") as HTMLDialogElement).showModal();
+                  setIsAnalyzing(false);
+                }
+              )
+              .then(() => {
+                setIsAnalyzing(false);
+              });
           }}
           onRemove={() => {
             st.do.setImprovementImage(null);

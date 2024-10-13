@@ -205,9 +205,6 @@ export const getGptPhase2Response = async (
           const jsonObject: unknown = JSON.parse(jsonString);
 
           if (!isSkinImprovementData(jsonObject)) {
-            // console.log("result", gptResult);
-            // console.log("jsonObject", jsonObject);
-            // console.log("response", outputText);
             reject(
               errors.jsonParseError(
                 "JSON parsing failed. The JSON is not in the expected format." + outputText,

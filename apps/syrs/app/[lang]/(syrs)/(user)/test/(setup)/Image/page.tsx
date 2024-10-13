@@ -8,6 +8,7 @@ import { cnst } from "@shared/client";
 import { fetch, st, usePage } from "@syrs/client";
 import { router } from "@core/client";
 import { useInterval } from "@core/next";
+import { useEffect } from "react";
 
 export default function Page() {
   const { l } = usePage();
@@ -20,12 +21,7 @@ export default function Page() {
     fileList: FileList | File[],
     id?: string | undefined
   ) => Promise<cnst.File[]>;
-  const value = testForm.image;
 
-  useInterval(async () => {
-    if (value?.status !== "uploading") return;
-    st.do.setImageOnTest(await fetch.file(value.id));
-  }, 1000);
   return (
     <div className="w-full h-full flex items-center flex-col flex-grow-0">
       <div className="flex flex-col pt-40">

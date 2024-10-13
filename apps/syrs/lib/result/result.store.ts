@@ -31,12 +31,12 @@ export class ResultStore extends stateOf(fetch.resultGql, {
   }
   async calculateImprvement(
     resultId: string,
-    imageUrl: string,
+    imageId: string,
     onSuccess?: (result: cnst.Result) => void | Promise<void>,
     onFailed?: (error: Error) => void | Promise<void>
   ) {
     await fetch
-      .calculateImprvement(resultId, imageUrl)
+      .calculateImprvement(resultId, imageId)
       .then(async (result) => {
         this.setResult(result);
         onSuccess && (await onSuccess(result));
@@ -50,7 +50,7 @@ export class ResultStore extends stateOf(fetch.resultGql, {
     return;
   }
 
-  async setImprovementImage(image: shared.File, onSuccess?: (image: shared.File) => void | Promise<void>) {
+  async setImprovementImage(image: shared.File | null, onSuccess?: (image: shared.File) => void | Promise<void>) {
     this.set({ improvementImage: image });
     onSuccess && (await onSuccess(image));
   }
