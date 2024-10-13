@@ -1,4 +1,4 @@
 appName: syrs
 subRoutes: []
 main:
-  domains: []
+  domains: ["ai.syrs.kr"]
