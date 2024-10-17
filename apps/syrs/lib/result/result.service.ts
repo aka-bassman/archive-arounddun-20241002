@@ -49,7 +49,7 @@ export class ResultService extends DbService(db.resultDb) {
     if (!image) {
       throw new Error("Image activation failed");
     }
-    const imageUrl = lowerCase(image.url);
+    const imageUrl = image.url.toLowerCase();
     this.logger.info(`Calculating result for test ${testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptResponse(test, prompt, imageUrl).catch((e: unknown) => {
       this.logger.error((e as Error).message + "calculation failed");
@@ -89,7 +89,7 @@ export class ResultService extends DbService(db.resultDb) {
     if (!image) {
       throw new Error("Image activation failed");
     }
-    const imageUrl = lowerCase(image.url);
+    const imageUrl = image.url.toLowerCase();
 
     this.logger.info(`Calculating result for test ${result.testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptPhase2Response(result, prompt, imageUrl, test.lang).catch((e: unknown) => {
