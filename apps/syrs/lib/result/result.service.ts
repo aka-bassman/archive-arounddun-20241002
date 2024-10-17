@@ -24,6 +24,7 @@ export class ResultService extends DbService(db.resultDb) {
         const file = await this.fileService.getFile(fileId);
         if (file?.status === "active") {
           clearInterval(timer);
+          this.logger.info("File activated : " + file.url);
           resolve(file);
         }
         // polling limit
@@ -48,6 +49,7 @@ export class ResultService extends DbService(db.resultDb) {
       throw new Error("Image activation failed");
     }
     const imageUrl = image.url;
+    this.logger.info(`Calculating result for test ${testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptResponse(test, prompt, imageUrl).catch((e: unknown) => {
       this.logger.error((e as Error).message + "calculation failed");
       throw e;
