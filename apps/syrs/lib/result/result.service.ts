@@ -4,6 +4,7 @@ import { GmailApi } from "@util/nest";
 import { cnst } from "../cnst";
 import { getGptPhase2Response, getGptResponse } from "@syrs/nest/getGptResponse";
 import type * as srv from "../srv";
+import { lowerCase } from "lodash";
 
 @Service("ResultService")
 export class ResultService extends DbService(db.resultDb) {
@@ -48,7 +49,7 @@ export class ResultService extends DbService(db.resultDb) {
     if (!image) {
       throw new Error("Image activation failed");
     }
-    const imageUrl = image.url;
+    const imageUrl = lowerCase(image.url);
     this.logger.info(`Calculating result for test ${testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptResponse(test, prompt, imageUrl).catch((e: unknown) => {
       this.logger.error((e as Error).message + "calculation failed");
@@ -83,11 +84,12 @@ export class ResultService extends DbService(db.resultDb) {
     const result = await this.resultModel.getResult(resultId);
     const prompt = await this.promptService.getDefaultPrompt();
     const test = await this.testService.getTest(result.testId);
+
     const image = await this.pollingFileActivated(imageId);
     if (!image) {
       throw new Error("Image activation failed");
     }
-    const imageUrl = image.url;
+    const imageUrl = lowerCase(image.url);
 
     this.logger.info(`Calculating result for test ${result.testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptPhase2Response(result, prompt, imageUrl, test.lang).catch((e: unknown) => {
