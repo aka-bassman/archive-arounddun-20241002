@@ -89,7 +89,7 @@ export class ResultService extends DbService(db.resultDb) {
     }
     const imageUrl = image.url;
 
-    this.logger.info(`Calculating result for test ${result.testId} and testName ${test.name}`);
+    this.logger.info(`Calculating result for test ${result.testId} and testName ${test.name} url ${imageUrl} test`);
     const gptJson = await getGptPhase2Response(result, prompt, imageUrl, test.lang).catch((e: unknown) => {
       this.logger.error((e as Error).message + "calculation failed");
       throw e;
