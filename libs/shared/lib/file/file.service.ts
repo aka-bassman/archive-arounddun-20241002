@@ -71,6 +71,7 @@ export class FileService extends DbService(db.fileDb) {
   async #addFileFromStream(fileStream: FileStream, fileMeta: db.FileMeta, purpose: string, group: string | null) {
     const resolvedFileStream = await (fileStream as unknown as Promise<FileStream>);
     const { filename, mimetype, encoding } = resolvedFileStream;
+    const lowerName = filename.toLowerCase();
     const file = await this.fileModel.createFile({
       progress: 0,
       url: "",
@@ -132,8 +133,9 @@ export class FileService extends DbService(db.fileDb) {
   }
   #convertFileName(file: db.File) {
     const split = file.filename.split(".");
+
     const ext = split.length > 1 ? `.${split.at(-1)}` : "";
-    return `${file.id}${ext}`;
+    return `${file.id}${ext}`.toLowerCase();
   }
   async migrate(file: db.File) {
     if (!file.url) return;
