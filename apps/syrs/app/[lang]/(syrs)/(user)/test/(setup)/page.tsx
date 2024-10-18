@@ -90,14 +90,21 @@ export default function Page() {
           inputClassName=" border-none h-8 mt-2 bg-syrs-selector"
         />
       </div>
-      <div className=" flex sm:absolute bottom-8 right-6">
-        <label
-          htmlFor="policy"
-          className="btn border-syrs-logo text-syrs-logo text-xl border-opacity-40 text-opacity-40 hover:border-none hover:bg-syrs-selected hover:text-white text-wh font-semibold px-6 py-0 rounded-md"
+      <button className=" flex sm:absolute bottom-8 right-6">
+        <button
+          onClick={() => {
+            if (!testForm.name || !testForm.dateOfBirth || !testForm.email) {
+              alert("Please fill in all fields");
+              return;
+            } else {
+              document.getElementById("policy")?.click();
+            }
+          }}
+          className="btn border-syrs-logo btn-ghost text-syrs-logo text-xl border-opacity-40 text-opacity-40 hover:border-none hover:bg-syrs-selected hover:text-white text-wh font-semibold px-6 py-0 rounded-md"
         >
           {l("test.start")}
-        </label>
-      </div>
+        </button>
+      </button>
       <input type="checkbox" id="policy" className="modal-toggle" />
       <div className="modal max-w-none" role="dialog">
         <div className="modal-box w-11/12 max-w-[570px] flex-col items-center bg-[#F6F3EE] text-syrs-font text-opacity-70 px-12">

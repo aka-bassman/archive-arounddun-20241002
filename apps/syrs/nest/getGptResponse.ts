@@ -82,7 +82,7 @@ export const getGptResponse = async (test: db.Test, prompt: db.Prompt, imageUrl:
   const openai = new OpenAI({ apiKey: prompt.apiKey });
   const thread = await openai.beta.threads.create();
 
-  const phase1Text = `phase1: {username : ${test.name},dateOfBirth: ${test.dateOfBirth},typeA:${test.answers.typeA},typeB:${test.answers.typeB},typeC:${test.answers.typeC},typeD:${test.answers.typeD},typeE:${test.answers.typeE}} 답변Json의 key는 입력값 그대로하되 value들은 ${test.lang}언어로 작성부탁해. 이름이 뭐든간에 ${test.lang}언어로 부탁할게`;
+  const phase1Text = `phase1: {username : ${test.name},dateOfBirth: ${test.dateOfBirth},typeA:${test.answers.typeA},typeB:${test.answers.typeB},typeC:${test.answers.typeC},typeD:${test.answers.typeD},typeE:${test.answers.typeE}} 답변Json의 key는 입력값 그 대로하되 value들은 ${test.lang}언어로 작성부탁해. 이름이 뭐든간에 ${test.lang}언어로 부탁할게 `;
 
   const message = await openai.beta.threads.messages.create(thread.id, {
     role: "user",

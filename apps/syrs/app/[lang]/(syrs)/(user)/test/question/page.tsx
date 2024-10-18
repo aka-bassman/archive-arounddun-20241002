@@ -157,42 +157,43 @@ export default function Page() {
         />
       )}
 
-      {currentQuestion < 5 && (
-        <div className="flex w-full justify-center mt-auto absolute bottom-12 px-8 ">
-          {currentQuestion > 0 && (
-            <button
-              className="btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 "
-              onClick={() => {
-                setCurrentQuestion(currentQuestion - 1);
-              }}
-            >
-              <span>
-                <FaChevronLeft />
-              </span>
-              {l("test.prev")}
-            </button>
-          )}
-          {currentQuestion < 5 && (
-            <button
-              className={
-                isNextFocused
-                  ? "btn btn-ghost border-syrs-logo text-xl border-opacity-40 border-none text-opacity-50 text-syrs-brown font-semibold px-6 py-0 ml-auto"
-                  : "btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 ml-auto"
-              }
-              // "btn btn-ghost hover:border-syrs-logo text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 hover:text-syrs-brown font-semibold px-6 py-0 ml-auto"
-              onClick={() => {
-                setCurrentQuestion(currentQuestion + 1);
-                setIsNextFocused(false);
-              }}
-            >
-              {l("test.next")}
-              <span>
-                <FaChevronRight />
-              </span>
-            </button>
-          )}
-        </div>
-      )}
+      <div className="flex w-full justify-center mt-auto absolute bottom-12 px-8 ">
+        {currentQuestion > 0 && (
+          <button
+            className="btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 "
+            onClick={() => {
+              setCurrentQuestion(currentQuestion - 1);
+            }}
+          >
+            <span>
+              <FaChevronLeft />
+            </span>
+            {l("test.prev")}
+          </button>
+        )}
+        {currentQuestion < 5 ? (
+          <button
+            className={
+              isNextFocused
+                ? "btn btn-ghost border-syrs-logo text-xl border-opacity-40 border-none text-opacity-50 text-syrs-brown font-semibold px-6 py-0 ml-auto"
+                : "btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 ml-auto"
+            }
+            // "btn btn-ghost hover:border-syrs-logo text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 hover:text-syrs-brown font-semibold px-6 py-0 ml-auto"
+            onClick={() => {
+              setCurrentQuestion(currentQuestion + 1);
+              setIsNextFocused(false);
+            }}
+          >
+            {l("test.next")}
+            <span>
+              <FaChevronRight />
+            </span>
+          </button>
+        ) : (
+          <div className="ml-auto"></div>
+        )}
+      </div>
+
       {currentQuestion >= 5 && (
         <div className="w-full flex flex-col items-center px-16">
           <div className=" text-lg">{l("test.completeTest")}</div>
@@ -212,8 +213,18 @@ export default function Page() {
             <div className=" text-base">{l("test.flowDesc3")}</div>
           </div>
           <button
-            className="btn btn-ghost hover:border-syrs-logo text-xl border-opacity-40 border-none hover:bg-syrs-selected text-syrs-logo text-opacity-60 hover:text-syrs-brown font-semibold py-0 mt-auto absolute bottom-12 right-8"
+            className="btn btn-ghost hover:border-syrs-logo disabled:text-syrs-bg text-xl border-opacity-40 border-none hover:bg-syrs-selected text-syrs-logo text-opacity-60 hover:text-syrs-brown font-semibold py-0 mt-auto absolute bottom-12 right-8"
             onClick={async () => {
+              if (
+                !testForm.answers.typeA ||
+                !testForm.answers.typeB ||
+                !testForm.answers.typeC ||
+                !testForm.answers.typeD ||
+                !testForm.answers.typeE
+              ) {
+                alert("Please fill in all fields");
+                return;
+              }
               setIsAnalyzing(true);
               if (testForm.id) {
                 await st.do.calculateResult(
