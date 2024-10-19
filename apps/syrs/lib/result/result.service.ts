@@ -159,6 +159,7 @@ export class ResultService extends DbService(db.resultDb) {
 
     void this.gmailApi
       .sendMail({
+        from : "ai@syrs.kr",
         to: test.email,
         subject: "SYRS 피부 검사지",
         html: `<!DOCTYPE html>
