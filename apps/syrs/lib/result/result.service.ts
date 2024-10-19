@@ -161,7 +161,7 @@ export class ResultService extends DbService(db.resultDb) {
       .sendMail({
         from : "ai@syrs.kr",
         to: test.email,
-        subject: "SYRS 피부 검사지",
+        subject: `[SYRS] ${test.name}님의 피부 진단 결과를 확인하세요.`,
         html: `<!DOCTYPE html>
 <html lang=${test.lang}>
 <head>
