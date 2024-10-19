@@ -23,7 +23,7 @@ export class TestInput {
   @Field.Prop(() => String)
   name: string;
 
-  @Field.Prop(() => Date, { default: dayjs("2004-01-01") })
+  @Field.Prop(() => Date, { default: dayjs("1980-01-01") })
   dateOfBirth: Dayjs;
 
   @Field.Prop(() => String)
