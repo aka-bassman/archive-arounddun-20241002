@@ -176,9 +176,9 @@ export default function Page() {
             className={
               isNextFocused
                 ? "btn btn-ghost border-syrs-logo text-xl border-opacity-40 border-none text-opacity-50 text-syrs-brown font-semibold px-6 py-0 ml-auto"
-                : "btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 ml-auto"
+                : "btn btn-ghost text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 font-semibold px-6 py-0 ml-auto disabled:text-syrs-selected"
             }
-            // "btn btn-ghost hover:border-syrs-logo text-xl border-opacity-40 border-none  text-syrs-selected text-opacity-50 hover:text-syrs-brown font-semibold px-6 py-0 ml-auto"
+            disabled={!isNextFocused}
             onClick={() => {
               setCurrentQuestion(currentQuestion + 1);
               setIsNextFocused(false);
